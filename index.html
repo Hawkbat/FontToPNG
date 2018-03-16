@@ -1,0 +1,34 @@
+<!doctype html>
+<html>
+<body>
+	<style>
+		canvas {
+			border: 1px solid black;
+			background-color: #A0A0A0;
+			background-image: url("grid.png");
+			image-rendering: pixelated;
+		}
+	</style>
+	<canvas id="canvas"></canvas>
+	<script>
+		var w = 20
+		var h = 32
+		var yoffset = -7
+		var dw = w * 2
+		var dh = h * 2
+		var hw = w / 2
+		var hh = h / 2
+		var canvas = document.getElementById('canvas')
+		canvas.width = w * 16
+		canvas.height = h * 6
+		canvas.style.backgroundSize = `${dw}px ${dh}px`
+		var ctx = canvas.getContext('2d')
+		ctx.fillStyle = 'white'
+		ctx.font = `${h - 1}px Consolas`
+		ctx.textAlign = 'center'
+		for (var i = 32; i < 128; i++) {
+			ctx.fillText(String.fromCharCode(i), (i % 16) * w + hw, Math.floor(i / 16) * h - h + yoffset)
+		}
+	</script>
+</body>
+</html>
